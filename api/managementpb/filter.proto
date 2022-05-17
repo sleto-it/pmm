@@ -8,63 +8,52 @@ import "protoc-gen-openapiv2/options/annotations.proto";
 import "google/api/annotations.proto";
 
 // Checks for results whose key is equal to the provided scalar value.
-// Valid for (int32 | int64 | string ).
-message EqualsFilter {
-  oneof value {
-    int32 int_value = 1;
-    int64 long_value = 2;
-    string string_value = 3;
-  }
+message EqualsStringFilter {
+  string value = 1;
+}
+message EqualsIntFilter {
+  int64 value = 1;
+}
+message EqualsLongFilter {
+  int64 value = 1;
 }
 
-// Checks for results whose key is not equal to the provided scalar value.
-// Valid for (int32 | int64 | string).
-message NotEqualsFilter {
-  oneof value {
-    int32 int_value = 1;
-    int64 long_value = 2;
-    string string_value = 3;
-  }
+// Checks for results whose key is not equal to the provided string value.
+message NotEqualsStringFilter {
+  string value = 1;
+}
+// Checks for results whose key is not equal to the provided int32 value.
+message NotEqualsIntFilter {
+  int32 value = 1;
+}
+// Checks for results whose key is not equal to the provided int64 value.
+message NotEqualsLongFilter {
+  int64 value = 1;
 }
 
 // Returns results whose key lies within the inclusive range of the provided minimum and maximum values.
 // Valid for (IntRangeValues).
-message BetweenFilter {
-  IntRangeValues int_range_values = 1;
-}
-
-// Checks for results whose key exists in a given array.
-// Valid for (int_values | long_values | string_values).
-message InFilter {
-  oneof value {
-    IntValues int_values = 1;
-    LongValues long_values = 2;
-    StringValues string_values = 3;
-  }
-}
-
-// Checks for results whose key contains value as a substring
-// Valid for (string_values).
-message ContainsFilter {
-  // Value to search results in.
-  string value = 1;
-}
-
-message IntValues {
-  repeated int32 values = 1;
-}
-
-message LongValues {
-  repeated int64 values = 1;
-}
-
-message StringValues {
-  repeated string values = 1;
-}
-
-message IntRangeValues {
+message BetweenIntFilter {
   // Minimum value in the range.
   int32 minimum = 1;
   // Maximum value in the range.
   int32 maximum = 2;
+}
+
+// Checks for results whose key exists in a given array.
+message InStringFilter {
+  repeated string values = 1;
+}
+message InIntFilter {
+  repeated int32 values = 1;
+}
+message InLongFilter {
+  repeated int64 values = 1;
+}
+
+// Checks for results whose key contains value as a substring
+// Valid for (string_values).
+message ContainsStringFilter {
+  // Value to search results in.
+  string value = 1;
 }

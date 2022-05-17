@@ -661,167 +661,21 @@ func (o *ListSecurityChecksParamsBodyFilterParams) UnmarshalBinary(b []byte) err
 }
 
 /*ListSecurityChecksParamsBodyFilterParamsCategory Checks for results whose key exists in a given array.
-// Valid for (int_values | long_values | string_values).
 swagger:model ListSecurityChecksParamsBodyFilterParamsCategory
 */
 type ListSecurityChecksParamsBodyFilterParamsCategory struct {
 
-	// int values
-	IntValues *ListSecurityChecksParamsBodyFilterParamsCategoryIntValues `json:"int_values,omitempty"`
-
-	// long values
-	LongValues *ListSecurityChecksParamsBodyFilterParamsCategoryLongValues `json:"long_values,omitempty"`
-
-	// string values
-	StringValues *ListSecurityChecksParamsBodyFilterParamsCategoryStringValues `json:"string_values,omitempty"`
+	// values
+	Values []string `json:"values"`
 }
 
 // Validate validates this list security checks params body filter params category
 func (o *ListSecurityChecksParamsBodyFilterParamsCategory) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.validateIntValues(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateLongValues(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.validateStringValues(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
-func (o *ListSecurityChecksParamsBodyFilterParamsCategory) validateIntValues(formats strfmt.Registry) error {
-	if swag.IsZero(o.IntValues) { // not required
-		return nil
-	}
-
-	if o.IntValues != nil {
-		if err := o.IntValues.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "int_values")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "int_values")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *ListSecurityChecksParamsBodyFilterParamsCategory) validateLongValues(formats strfmt.Registry) error {
-	if swag.IsZero(o.LongValues) { // not required
-		return nil
-	}
-
-	if o.LongValues != nil {
-		if err := o.LongValues.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "long_values")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "long_values")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *ListSecurityChecksParamsBodyFilterParamsCategory) validateStringValues(formats strfmt.Registry) error {
-	if swag.IsZero(o.StringValues) { // not required
-		return nil
-	}
-
-	if o.StringValues != nil {
-		if err := o.StringValues.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "string_values")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "string_values")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-// ContextValidate validate this list security checks params body filter params category based on the context it is used
+// ContextValidate validates this list security checks params body filter params category based on context it is used
 func (o *ListSecurityChecksParamsBodyFilterParamsCategory) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	if err := o.contextValidateIntValues(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateLongValues(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := o.contextValidateStringValues(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (o *ListSecurityChecksParamsBodyFilterParamsCategory) contextValidateIntValues(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.IntValues != nil {
-		if err := o.IntValues.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "int_values")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "int_values")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *ListSecurityChecksParamsBodyFilterParamsCategory) contextValidateLongValues(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.LongValues != nil {
-		if err := o.LongValues.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "long_values")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "long_values")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
-func (o *ListSecurityChecksParamsBodyFilterParamsCategory) contextValidateStringValues(ctx context.Context, formats strfmt.Registry) error {
-
-	if o.StringValues != nil {
-		if err := o.StringValues.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "string_values")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("body" + "." + "filter_params" + "." + "category" + "." + "string_values")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
@@ -836,117 +690,6 @@ func (o *ListSecurityChecksParamsBodyFilterParamsCategory) MarshalBinary() ([]by
 // UnmarshalBinary interface implementation
 func (o *ListSecurityChecksParamsBodyFilterParamsCategory) UnmarshalBinary(b []byte) error {
 	var res ListSecurityChecksParamsBodyFilterParamsCategory
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*ListSecurityChecksParamsBodyFilterParamsCategoryIntValues list security checks params body filter params category int values
-swagger:model ListSecurityChecksParamsBodyFilterParamsCategoryIntValues
-*/
-type ListSecurityChecksParamsBodyFilterParamsCategoryIntValues struct {
-
-	// values
-	Values []int32 `json:"values"`
-}
-
-// Validate validates this list security checks params body filter params category int values
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryIntValues) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this list security checks params body filter params category int values based on context it is used
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryIntValues) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryIntValues) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryIntValues) UnmarshalBinary(b []byte) error {
-	var res ListSecurityChecksParamsBodyFilterParamsCategoryIntValues
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*ListSecurityChecksParamsBodyFilterParamsCategoryLongValues list security checks params body filter params category long values
-swagger:model ListSecurityChecksParamsBodyFilterParamsCategoryLongValues
-*/
-type ListSecurityChecksParamsBodyFilterParamsCategoryLongValues struct {
-
-	// values
-	Values []string `json:"values"`
-}
-
-// Validate validates this list security checks params body filter params category long values
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryLongValues) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this list security checks params body filter params category long values based on context it is used
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryLongValues) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryLongValues) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryLongValues) UnmarshalBinary(b []byte) error {
-	var res ListSecurityChecksParamsBodyFilterParamsCategoryLongValues
-	if err := swag.ReadJSON(b, &res); err != nil {
-		return err
-	}
-	*o = res
-	return nil
-}
-
-/*ListSecurityChecksParamsBodyFilterParamsCategoryStringValues list security checks params body filter params category string values
-swagger:model ListSecurityChecksParamsBodyFilterParamsCategoryStringValues
-*/
-type ListSecurityChecksParamsBodyFilterParamsCategoryStringValues struct {
-
-	// values
-	Values []string `json:"values"`
-}
-
-// Validate validates this list security checks params body filter params category string values
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryStringValues) Validate(formats strfmt.Registry) error {
-	return nil
-}
-
-// ContextValidate validates this list security checks params body filter params category string values based on context it is used
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryStringValues) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	return nil
-}
-
-// MarshalBinary interface implementation
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryStringValues) MarshalBinary() ([]byte, error) {
-	if o == nil {
-		return nil, nil
-	}
-	return swag.WriteJSON(o)
-}
-
-// UnmarshalBinary interface implementation
-func (o *ListSecurityChecksParamsBodyFilterParamsCategoryStringValues) UnmarshalBinary(b []byte) error {
-	var res ListSecurityChecksParamsBodyFilterParamsCategoryStringValues
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

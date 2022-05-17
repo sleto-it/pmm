@@ -9,7 +9,6 @@ import (
 
 	proto "github.com/golang/protobuf/proto"
 	_ "github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2/options"
-	github_com_mwitkow_go_proto_validators "github.com/mwitkow/go-proto-validators"
 	_ "google.golang.org/genproto/googleapis/api/annotations"
 )
 
@@ -18,56 +17,36 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-func (this *EqualsFilter) Validate() error {
+func (this *EqualsStringFilter) Validate() error {
 	return nil
 }
-func (this *NotEqualsFilter) Validate() error {
+func (this *EqualsIntFilter) Validate() error {
 	return nil
 }
-func (this *BetweenFilter) Validate() error {
-	if this.IntRangeValues != nil {
-		if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(this.IntRangeValues); err != nil {
-			return github_com_mwitkow_go_proto_validators.FieldError("IntRangeValues", err)
-		}
-	}
+func (this *EqualsLongFilter) Validate() error {
 	return nil
 }
-func (this *InFilter) Validate() error {
-	if oneOfNester, ok := this.GetValue().(*InFilter_IntValues); ok {
-		if oneOfNester.IntValues != nil {
-			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.IntValues); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("IntValues", err)
-			}
-		}
-	}
-	if oneOfNester, ok := this.GetValue().(*InFilter_LongValues); ok {
-		if oneOfNester.LongValues != nil {
-			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.LongValues); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("LongValues", err)
-			}
-		}
-	}
-	if oneOfNester, ok := this.GetValue().(*InFilter_StringValues); ok {
-		if oneOfNester.StringValues != nil {
-			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.StringValues); err != nil {
-				return github_com_mwitkow_go_proto_validators.FieldError("StringValues", err)
-			}
-		}
-	}
+func (this *NotEqualsStringFilter) Validate() error {
 	return nil
 }
-func (this *ContainsFilter) Validate() error {
+func (this *NotEqualsIntFilter) Validate() error {
 	return nil
 }
-func (this *IntValues) Validate() error {
+func (this *NotEqualsLongFilter) Validate() error {
 	return nil
 }
-func (this *LongValues) Validate() error {
+func (this *BetweenIntFilter) Validate() error {
 	return nil
 }
-func (this *StringValues) Validate() error {
+func (this *InStringFilter) Validate() error {
 	return nil
 }
-func (this *IntRangeValues) Validate() error {
+func (this *InIntFilter) Validate() error {
+	return nil
+}
+func (this *InLongFilter) Validate() error {
+	return nil
+}
+func (this *ContainsStringFilter) Validate() error {
 	return nil
 }

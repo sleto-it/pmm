@@ -118,7 +118,7 @@ message StartSecurityChecksResponse {}
 
 message ListSecurityChecksRequest {
   message FilterParams {
-    InFilter category = 1;
+    InStringFilter category = 1;
   }
   FilterParams filter_params = 1;
 }
