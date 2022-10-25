@@ -81,6 +81,20 @@ func (x gaps) Less(i, j int) bool {
 }
 func (x gaps) Swap(i, j int) { x[i], x[j] = x[j], x[i] }
 
+type timelines []Timeline
+
+func (x timelines) Len() int {
+	return len(x)
+}
+
+func (x timelines) Less(i, j int) bool {
+	return x[i].Start < x[j].Start || (x[i].Start == x[j].Start && x[i].End < x[j].End)
+}
+
+func (x timelines) Swap(i, j int) {
+	x[i], x[j] = x[j], x[i]
+}
+
 // compressionType is the type of compression used for PITR oplog
 type compressionType string
 
@@ -154,11 +168,12 @@ func (ss *PITRTimerangeService) ListPITRTimeranges(ctx context.Context, artifact
 		return nil, nil
 	}
 
-	t, err := gettimelines(oplogs), nil
+	t, err := getTimelines(oplogs), nil
 	if err != nil {
 		return nil, errors.Wrapf(err, "get PITR timeranges for backup '%s'", artifactName)
 	}
 	if len(t) != 0 {
+		sort.Sort(t)
 		timelines = append(timelines, t)
 	}
 
@@ -226,7 +241,7 @@ func pitrParseTS(tstr string) *primitive.Timestamp {
 	return &ts
 }
 
-func gettimelines(slices []*oplogChunk) []Timeline {
+func getTimelines(slices []*oplogChunk) timelines {
 	var tl Timeline
 	var timelines []Timeline
 	var prevEnd primitive.Timestamp
