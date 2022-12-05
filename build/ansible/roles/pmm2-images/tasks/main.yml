@@ -29,7 +29,6 @@
         name: '*'
         state: latest
         exclude: 'ansible'
-        disablerepo: percona-release-x86_64
 
     - name: Packages                   | Install OS tools
       yum:
