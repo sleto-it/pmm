@@ -62,6 +62,7 @@ func mongodbExporterConfig(node *models.Node, service *models.Service, exporter 
 
 		if exporter.MongoDBOptions != nil && exporter.MongoDBOptions.EnableAllCollectors {
 			args = append(args, "--collector.shards")
+			args = append(args, "--collector.pbm")
 		}
 	case !pmmAgentVersion.Less(v2_25_99): // >= 2.26
 		args = v226Args(exporter, tdp, listenAddress)
