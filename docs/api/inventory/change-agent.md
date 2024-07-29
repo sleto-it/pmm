@@ -13,8 +13,14 @@ This section describes how to change Agent attributes.
 
 In PMM versions prior to 3.0.0, we featured a separate API call for each Agent type. Starting with PMM 3.0.0, we have streamlined the process by offering a single API endpoint for all Agent types. 
 
-Previously, the Agent type was defined by the endpoint, i.e. `/v1/inventory/Agents/ChangeMySQLdExporter`. In the new approach, the Agent type must be specified as the top-level property of the request payload. 
-As part of the single API endpoint updated, we have deprecating individual API endpoints for each Agent type.
+Previously, the Agent type was defined by the endpoints:
+
+- `/v1/inventory/Agents/ChangeMySQLdExporter` for MySQL
+- `/v1/inventory/Agents/ChangeMongoDBExporter` for MongoDB
+- `/v1/inventory/Agents/ChangePostgresExporter` for PostgreSQL
+
+In the new approach, the Agent type must be specified as the top-level property of the request payload. 
+As part of the single API endpoint updated, in PMM v3.0.0 we have deprecated individual API endpoints for each Agent type.
 
 Here's how to change Agent attributes using the old and new API calls. The goal of this sample API call is to enable the Agent, make it work in Push mode, and remove a few custom labels from it. 
 
